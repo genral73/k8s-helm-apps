@@ -18,7 +18,7 @@ spec:
         - name: echo
           image: hashicorp/http-echo
           args:
-            - "-text=Welcome To echo App In tap-app-of-apps Repo"
+          - "-text=Welcome To echo App In tap-app-of-apps Repo"
           resources:
             limits:
               cpu: 200m
