@@ -13,11 +13,11 @@ spec:
   - host: echoapp.localhost
     http:
       paths:
-      - backend:
-          serviceName: echo-app-svc
-          servicePort: 5678
-        path: /   
-
+        - path: /
+          backend:
+            serviceName: echo-app-svc
+            servicePort: 5678
+        
   tls:
   - hosts:
     - echoapp.localhost

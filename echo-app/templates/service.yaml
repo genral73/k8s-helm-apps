@@ -5,9 +5,6 @@ metadata:
 spec:
   selector:
     app : echo-app
-  type: ClusterIP
   ports:
-    - name: ehcoport
-      protocol: TCP
-      port: 5678
+    - port: 5678
   
