@@ -17,12 +17,3 @@ spec:
       containers:
         - name: echo
           image: hashicorp/http-echo
-          args:
-          - "-text=Welcome To echo App In tap-app-of-apps Repo"
-          resources:
-            limits:
-              cpu: '200m'
-              memory: 300Mi
-            requests:
-              cpu: '100m'
-              memory: 200Mi
