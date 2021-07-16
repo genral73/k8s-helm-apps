@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<head>
+  <title>
+    Sealed Issuer
+  </title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>Sealed Secret Issuer</h1>
+  <div class="flex-container">
+    <div class="half">
+      <h2>Input</h2>
+      <div id="properties-block" class="input-form">
+        <label for="name">Secret name:</label>
+        <input id="name" type="text" placeholder="secret-name" />
+        <label for="namespace">Namespace:</label>
+        <input id="namespace" type="text" placeholder="namespace-name" />
+        <div id="kv-list"></div>
+        <button onclick="addKVPair()">Add</button>
+      </div>
+      <div id="yaml-block" style="display: none" class="input-form">
+        <label for="yaml"> Secret manifest:</label>
+        <textarea
+          id="yaml"
+          placeholder="Enter the secret manifest, make sure the namespace is correct!"
+        ></textarea>
+      </div>
+      <button onclick="parseInput()">Seal</button>
+    </div>
+    <div class="half">
+      <h2>Output</h2>
+      <label for="output">Sealed secret:</label>
+      <textarea readonly id="output"></textarea>
+      <button onclick="copy()">Copy</button>
+      <button id="download" onclick="download()">
+        Download
+      </button>
+    </div>
+    <a style="display: none" id="download-anchor"></a>
+  </div>
+  <div class="link-group">
+    <a id="change-format-yaml" href="/?format=YAML">
+      Parse YAML
+    </a>
+    <a
+      id="change-format-properties"
+      href="/?format=Properties"
+      style="display: none"
+    >
+      Web Form
+    </a>
+  </div>
+  <script src="index.js"></script>
+</body>

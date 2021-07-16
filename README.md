@@ -1,1 +1,1 @@
-# k8s-helm-apps
+# kustomize-apps

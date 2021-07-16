@@ -1,0 +1,24 @@
+Installing the kubeseal client
+
+    wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.16.0/kubeseal-linux-amd64 -O kubeseal
+    sudo install -m 755 kubeseal /usr/local/bin/kubeseal
+
+
+Install SealedSecret CRD, server-side controller into kube-system namespace.
+    kubectl -n kube-system apply -f controller-v0.16.0.yaml
+    kubectl -n kube-system logs sealed-secrets-controller-8444599c77-sxsbs
+    kubectl get secret -n kube-system -l sealedsecrets.bitnami.com/sealed-secrets-key -o yaml > master.yaml
+
+
+#### https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-debian
+Migrate/Backuping/Restore encryption keys:
+Decrypt master.yaml then apply the secret before applying sealed-secret controller or just replace the existing one then restart the controller.
+    $ ansible-vault encrypt master.yaml
+    $ ansible-vault decrypt master.yaml
+
+
+Sealing the Secrets
+    kubeseal  --scope namespace-wide --format=yaml < ex-secret.yaml > ex-sealed-secret.yaml
+
+Or can Use Seadled Issuer
+        
